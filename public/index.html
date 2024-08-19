@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Interface</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    <h1>API Interface</h1>
+
+    <div class="flex-model">
+
+        <!-- Word Game Widget -->
+        <div class="widget" x-data="wordGameWidget()">
+            <h3>Word Game Widget</h3>
+            <div>
+                <input type="text" x-model="sentence" id="text" placeholder="Enter sentence">
+                <button x-on:click="checkSentence()">Analyse</button>
+            </div>
+            <div>
+                <div>Longest Word: <span x-text="longestWord"></span></div>
+                <div>Shortest Word: <span x-text="shortestWord"></span></div>
+                <div>Word Length: <span x-text="wordLengths"></span></div>
+            </div>
+        </div>
+
+        <!-- Phone Bill Widget -->
+        <div class="widget" x-data="phoneBillWidget()">
+            <h3>Total Phone Bill</h3>
+            <div x-show="billMessage.length > 0" class="message" x-text="billMessage">
+                Your bill message will be displayed here....
+            </div>
+            <div class="input">
+                <label for="billStr">Enter projected usage: </label>
+                <input type="text" placeholder="call,sms" x-model="billStr" id="billStr">
+            </div>
+            <div class="cont">
+                <button x-on:click="phoneBill()">Compute Bill</button>
+            </div>
+        </div>
+
+        <!-- Enough Airtime Widget -->
+        <div class="widget" x-data="enoughAirtimeWidget()">
+            <h3>Enough Airtime?</h3>
+            <div x-show="billMessage.length > 0" class="message" x-text="billMessage">
+                Your bill message will be displayed here....
+            </div>
+            <div class="input">
+                <label for="usage">Enter projected usage: </label>
+                <input type="text" placeholder="call,sms,data" x-model="usage" id="usage"><br><br>
+                <label for="available">Enter airtime available: </label>
+                <input type="number" placeholder="R0.00" x-model="available" id="available" min="0" oninput="this.value = Math.abs(this.value)">
+            </div>
+            <div class="cont">
+                <button x-on:click="enoughAirtimeBill()">Compute Bill</button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

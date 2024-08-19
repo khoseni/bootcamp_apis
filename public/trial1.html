@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="app.js" defer></script> <!-- Link to your external JavaScript file -->
+</head>
+<body>
+    <div x-data="wordGame()">
+        <input type="text" x-model="sentence" placeholder="Enter a sentence" />
+        <button @click="fetchData()">Get Words Info</button>
+
+        <!-- Display error message if any -->
+        <div x-show="error" x-text="error" style="color: red;"></div>
+
+        <!-- Display results if they exist -->
+        <template x-if="longestWord || shortestWord">
+            <div>
+                <p><strong>Longest Word:</strong> <span x-text="longestWord"></span></p>
+                <p><strong>Shortest Word:</strong> <span x-text="shortestWord"></span></p>
+                <p><strong>Sum of Word Lengths:</strong> <span x-text="sum"></span></p>
+            </div>
+        </template>
+    </div>
+</body>
+</html>
