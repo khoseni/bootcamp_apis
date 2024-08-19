@@ -5,7 +5,7 @@ import { totalPhoneBill, setPrice, getPrices } from './phoneBill.js';
 import { enoughAirtime } from './enoughAirtime.js';
 
 const app = express();
-const express = express();
+
 
 
 app.use(express.urlencoded({ extended: false }));
